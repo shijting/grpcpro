@@ -1,0 +1,7 @@
+syntax = "proto3";
+option go_package ="grpcpro/pgfiles";
+import "prod.proto";
+
+service ProdServer {
+    rpc GetProd(ProdRequest) returns (ProdResponse);
+}

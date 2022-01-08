@@ -1,0 +1,11 @@
+syntax = "proto3";
+option go_package="grpcpro/pgfiles";
+
+message ProdRequest {
+    int32 id = 1;
+}
+
+message ProdResponse {
+    int32 id = 1;
+    string name = 2;
+}
