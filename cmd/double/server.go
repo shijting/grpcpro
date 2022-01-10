@@ -12,11 +12,12 @@ import (
 )
 
 const (
-	keyFile = "configs/certs/server.key"
+	serverKeyFile  = "configs/certs/server.key"
+	serverCertFile = "configs/certs/server.pem"
 )
 
 func main() {
-	cred, err := credentials.NewServerTLSFromFile(certFile, keyFile)
+	cred, err := credentials.NewServerTLSFromFile(serverCertFile, serverKeyFile)
 	if err != nil {
 		log.Fatal(err)
 	}

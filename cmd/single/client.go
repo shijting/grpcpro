@@ -13,17 +13,22 @@ import (
 	"google.golang.org/grpc"
 )
 
+const (
+	certFile           = "configs/certs/server.pem"
+	serverNameOverride = "test.grpc.sjt.com"
+)
+
 func main() {
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
 	defer cancel()
 
-	cred, err := credentials.NewClientTLSFromFile("configs/certs/server.pem", "test.grpc.sjt.com")
+	cred, err := credentials.NewClientTLSFromFile(certFile, serverNameOverride)
 	if err != nil {
 		log.Fatalln(err)
 	}
 
 	conn, err := grpc.DialContext(ctx,
-		":8080",
+		"test.grpc.sjt.com:8080",
 		grpc.WithTransportCredentials(cred))
 	if err != nil {
 		log.Fatal(err)
